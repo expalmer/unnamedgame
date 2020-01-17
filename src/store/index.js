@@ -101,6 +101,9 @@ const reduce = (items) => items.reduce((acc, y, yIndex) => {
 
 export const getBoardData = () => {
   const a = reduce(original())
+  console.log('original()', original())
+  console.log('a', a)
+
   const b = shuffle(colors())
   const c = rand(b.length)
   const d = a.map((i, idx) => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as styles from './styles'
+import * as S from './styles'
 import { getBoardData, getBoardTarget } from './store'
 
 import { changeItems, isInMatch } from './helpers'
@@ -22,49 +22,48 @@ function App() {
 
   return (
     <>
-      <styles.GlobalStyle />
-      <styles.Container>
-        <styles.Board>
+      <S.GlobalStyle />
+      <S.Container>
+        <S.Board>
           {items.map(i => {
             if (!i.color) {
               return null
             }
             return (
-              <styles.Item
+              <S.Item
                 key={i.id}
                 x={i.x}
                 y={i.y}
                 onClick={() => changePosition(i)}
+                color={i.color}
+                position={i.current && i.position}
               >
-                <styles.ItemInner
-                  color={i.color}
-                  position={i.current && i.position}
-                />
-              </styles.Item>
+                
+              </S.Item>
             )
           })}
-        </styles.Board>
-        <styles.Board mini>
+        </S.Board>
+        <S.Board mini>
           {master.map(i => {
             if (!i.color) {
               return null
             }
             return (
-              <styles.Item
+              <S.Item
                 mini
                 color={i.color}
                 key={i.id}
                 x={i.x}
                 y={i.y}
               >
-                <styles.ItemInner mini
+                <S.ItemInner mini
                   color={i.color}
                 />
-              </styles.Item>
+              </S.Item>
             )
           })}
-        </styles.Board>
-      </styles.Container >
+        </S.Board>
+      </S.Container >
     </>
   );
 }
