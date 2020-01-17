@@ -44,24 +44,26 @@ function App() {
             )
           })}
         </styles.Board>
-        {/* <styles.Board>
-        {master.map(i => {
-          if (!i.color) {
-            return null
-          }
-          return (
-            <styles.Item
-            color={i.color}
-            key={i.id}
-            x={i.x}
-            y={i.y}
-            onClick={() => changePosition(i)}
-            >
-            </styles.Item>
+        <styles.Board mini>
+          {master.map(i => {
+            if (!i.color) {
+              return null
+            }
+            return (
+              <styles.Item
+                mini
+                color={i.color}
+                key={i.id}
+                x={i.x}
+                y={i.y}
+              >
+                <styles.ItemInner mini
+                  color={i.color}
+                />
+              </styles.Item>
             )
           })}
-        <styles.Square /> */}
-        {/* </styles.Board> */}
+        </styles.Board>
       </styles.Container >
     </>
   );

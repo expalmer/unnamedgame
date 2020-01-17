@@ -154,7 +154,7 @@ export const ItemInner = styled.div`
   ${p => p.color === 'green' && 'background: linear-gradient(to right,#67dc67,#67dc67);'}
   ${p => p.color === 'yellow' && 'background: linear-gradient(to right,#FFEB3B,#FFEB3B);'}
   ${p => p.color === 'orange' && 'background: linear-gradient(to right,#fd9121,#fd9121);'}
-  ${p => p.color === 'white' && 'background: #ffffff;'}
+  ${p => p.color === 'white' && 'background: #111;'}
   ${p => p.mini && 'width: 20px; height: 20px;'}
   ${p => p.position && p.position === 'isLeft' && 'animation-name: isLeft;'}
   ${p => p.position && p.position === 'isRight' && 'animation-name: isRight;'}
