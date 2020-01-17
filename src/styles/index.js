@@ -32,41 +32,121 @@ export const Container = styled.div`
 `
 
 export const ItemInner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 58px;
   height: 58px;
   transform: translate3d(0, 0, 0);
-  animation-duration: 1s;
-  transition-duration: 1s;
+  animation-duration: .1s;
+  transition-duration: .1s;
   @keyframes isLeft {
     from {
-      transform: translate3d(-58px, 0, 0);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      transform: translate3d(58px, 0, 0) scale3d(0.9, 0.6, 0.7);
+
     }
+    20%,
+    53%,
+    80%,
     to {
-      transform: translate3d(0, 0, 0);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    40%,
+    43% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(-5px, 0px, 0) scale3d(0.9, 0.6, 0.7);
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(-2px, 0, 0) scale3d(0.9, 0.1, 0.7);
+    }
+
+    90% {
+        transform: translate3d(-2px, 0, 0) scale3d(0.6, 0.6, 0.7);
     }
   }
   @keyframes isRight {
     from {
-      transform: translate3d(58px, 0, 0);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      transform: translate3d(-58px, 0, 0) scale3d(0.9, 0.6, 0.7);;
     }
+    20%,
+    53%,
+    80%,
     to {
-      transform: translate3d(0, 0, 0);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform: translate3d(0, 0, 0) scale3d(1);
+    }
+    40%,
+    43% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(-5px, 0px, 0) scale3d(0.9, 0.6, 0.7);
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(-2px, 0, 0);
+    }
+
+    90% {
+        transform: translate3d(-2px, 0, 0);
     }
   }
   @keyframes isTop {
     from {
-      transform: translate3d(0, -58px, 0);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      transform: translate3d(0 ,58px, 0);
     }
+    20%,
+    53%,
+    80%,
     to {
-      transform: translate3d(0, 0, 0);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform: translate3d(0, 0, 0);
+    }
+    40%,
+    43% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(0, -5px, 0);
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(0 -2px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, -2px, 0);
     }
   }
   @keyframes isBottom {
     from {
-      transform: translate3d(0, 58px, 0);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      transform: translate3d(0 -58px, 0);
     }
+    20%,
+    53%,
+    80%,
     to {
-      transform: translate3d(0, 0, 0);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform: translate3d(0, 0, 0);
+    }
+    40%,
+    43% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(0, -5px, 0);
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(0, -2px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, -2px, 0);
     }
   }
   ${p => p.color === 'red' && 'background: linear-gradient(to right, #ec4545, #ec4545);'}
@@ -76,10 +156,10 @@ export const ItemInner = styled.div`
   ${p => p.color === 'orange' && 'background: linear-gradient(to right,#fd9121,#fd9121);'}
   ${p => p.color === 'white' && 'background: #ffffff;'}
   ${p => p.mini && 'width: 20px; height: 20px;'}
-  ${p => p.isLeft && 'animation-name: isLeft;'}
-  ${p => p.isRight && 'animation-name: isRight;'}
-  ${p => p.isBottom && 'animation-name: isBottom;'}
-  ${p => p.isTop && 'animation-name: isTop;'}
+  ${p => p.position && p.position === 'isLeft' && 'animation-name: isLeft;'}
+  ${p => p.position && p.position === 'isRight' && 'animation-name: isRight;'}
+  ${p => p.position && p.position === 'isBottom' && 'animation-name: isBottom;'}
+  ${p => p.position && p.position === 'isTop' && 'animation-name: isTop;'}
 `
 
 export const Item = styled.div`
