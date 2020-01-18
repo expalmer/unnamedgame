@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Global, css } from '@emotion/core'
+import noise from '../img/noise.png'
 
 export const GlobalStyle = props => (
   <Global
@@ -16,7 +17,9 @@ export const GlobalStyle = props => (
       body {
         margin: 0;
         font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
-        background: #000;
+        background: #202020;
+        background-image: url(${noise});
+        background-repeat: repeat;
       }
       @keyframes isLeft {
         from {
@@ -192,14 +195,20 @@ export const Board = styled.div`
   width: 300px;
   height: 300px;
   position: relative;
-  background: #111;
+  background: #202020;
+  background-image: url(${noise});
+  background-repeat: repeat;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.6), 
+                0 2px 4px rgba(0,0,0,0.6), 
+                0 4px 8px rgba(0,0,0,0.6), 
+                0 8px 16px rgba(0,0,0,0.6),
+                0 16px 32px rgba(0,0,0,0.6), 
+                0 32px 64px rgba(0,0,0,0.6);
 `
 
-export const MiniBoard = styled.div`
+export const MiniBoard = styled(Board)`
   width: 100px;
   height: 100px;
-  position: relative;
-  background: #111;
 `
 
 export const MiniItem = styled(ItemBase)`
