@@ -127,24 +127,29 @@ export const GlobalStyle = props => (
         }
       }
       @keyframes pulse {
-        from,
-        to {
+        from {
           transform: scale3d(1, 1, 1);
         }
 
         10%,
+        20% {
+          transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+        }
+
         30%,
         50%,
         70%,
         90% {
-          transform: scale3d(1.05, 1.05, 1.05);
+          transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
         }
-
-        20%,
         40%,
         60%,
         80% {
-          transform: scale3d(0.99, 0.99, 0.99);
+          transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+        }
+
+        to {
+          transform: scale3d(1, 1, 1);
         }
       }
     `}
@@ -201,8 +206,8 @@ export const MiniItem = styled(ItemBase)`
   width: 18px;
   height: 18px;
   opacity: 0.4;
-  animation-duration: 4s;
-  transition-duration: 4s;
+  animation-duration: 1s;
+  transition-duration: 1s;
   animation-iteration-count: infinite;
   transform: scale3d(1, 1, 1);
   ${({ color, matched }) => `

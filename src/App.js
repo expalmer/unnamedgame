@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import * as S from './styles'
 import { getBoardData, getBoardTarget } from './store'
 
@@ -10,16 +10,36 @@ function App() {
   const [master] = useState(getBoardTarget())
   const [matched, setMatched] = useState(false)
 
-  const changePosition = (item) => {
-    if (!item.isNext) {
+  const changePosition = useCallback((item) => {
+    if (!item || !item.isNext) {
       return
     }
     const nextItems = changeItems(items, item)
-    const isMatch = isInMatch(nextItems, master)
-    setMatched(isMatch)
+    setMatched(isInMatch(nextItems, master))
     setItems(nextItems)
-  }
+  }, [items, master])
 
+
+  const emptyItem = items.find(i => !i.color)
+  const mapped = items.filter(i => i.isNext).reduce((acc, i) => {
+    if (i.x > emptyItem.x) return {...acc, '37': i }
+    if (i.x < emptyItem.x) return {...acc, '39': i }
+    if (i.y > emptyItem.y) return {...acc, '38': i }
+    if (i.y < emptyItem.y) return {...acc, '40': i }
+    return acc
+  }, {})
+  
+  useEffect(() => {
+    const upHandler = e => {
+      const { keyCode } = e
+      changePosition(mapped[keyCode])
+    }    
+    window.addEventListener('keyup', upHandler);
+    return () => {
+      window.removeEventListener('keyup', upHandler);
+    };
+  }, [changePosition, mapped]);
+  
   return (
     <>
       <S.GlobalStyle />
