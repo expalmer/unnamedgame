@@ -1,10 +1,10 @@
 const COLORS = {
-  GREEN: 'green',
-  BLUE: 'blue',
+  GREEN: '#2ec52e',
+  BLUE: '#0c71ef',
   YELLOW: 'yellow',
-  RED: 'red',
-  ORANGE: 'orange',
-  WHITE: 'white'
+  RED: '#ff0000',
+  ORANGE: '#ff8100',
+  NONE: '#333333'
 }
 
 const rand = (n) => Math.floor(Math.random() * n)
@@ -120,7 +120,7 @@ export const getBoardTarget = () => {
   const b = shuffle(colors())
   const d = a.map((i, idx) => {
     if ([0, 4].includes(i.x) || [0, 4].includes(i.y)) {
-      return { ...i, color: COLORS.WHITE }
+      return { ...i, color: COLORS.NONE }
     }
     return { ...i, color: b[idx] }
   })

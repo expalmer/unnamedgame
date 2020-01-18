@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as S from './styles'
 import { getBoardData, getBoardTarget } from './store'
 
-import { changeItems, isInMatch } from './helpers'
+import { changeItems, isInMatch, inMatch } from './helpers'
 
 function App() {
 
@@ -24,6 +24,16 @@ function App() {
     <>
       <S.GlobalStyle />
       <S.Container>
+        <S.MiniBoard>
+          {master.map((i, idx) => (
+            <S.MiniItem 
+              key={i.id}
+              style={{ left: `${i.x * 20}px`, top: `${i.y * 20}px`}}
+              color={i.color}
+              matched={items[idx].color === i.color}
+            />
+          ))}
+        </S.MiniBoard>
         <S.Board>
           {items.map(i => {
             if (!i.color) {
@@ -32,37 +42,15 @@ function App() {
             return (
               <S.Item
                 key={i.id}
-                x={i.x}
-                y={i.y}
+                style={{ left: `${i.x * 60}px`, top: `${i.y * 60}px` }}
                 onClick={() => changePosition(i)}
                 color={i.color}
-                position={i.current && i.position}
-              >
-                
-              </S.Item>
+                anime={i.current && i.position}
+              />
             )
           })}
         </S.Board>
-        <S.Board mini>
-          {master.map(i => {
-            if (!i.color) {
-              return null
-            }
-            return (
-              <S.Item
-                mini
-                color={i.color}
-                key={i.id}
-                x={i.x}
-                y={i.y}
-              >
-                <S.ItemInner mini
-                  color={i.color}
-                />
-              </S.Item>
-            )
-          })}
-        </S.Board>
+        
       </S.Container >
     </>
   );

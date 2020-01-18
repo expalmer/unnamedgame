@@ -6,7 +6,7 @@ const fnIsNext = (a, b) => {
   return z || w
 }
 
-const inMatch = (a, b, idx) => a[idx].color === b[idx].color
+export const inMatch = (a, b, idx) => a[idx].color === b[idx].color
 
 export const isInMatch = (arrayA, arrayB) => [6, 7, 8, 11, 12, 13, 16, 17, 18].every(idx => inMatch(arrayA, arrayB, idx))
 

@@ -21,56 +21,55 @@ export const GlobalStyle = props => (
       @keyframes isLeft {
         from {
           animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-          transform: translate3d(58px, 0, 0) scale3d(0.9, 0.6, 0.7);
-    
+          transform: translate3d(58px, 0, 0);
         }
         20%,
         53%,
         80%,
         to {
             animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-            transform: translate3d(0, 0, 0) scale(1);
+            transform: translate3d(0, 0, 0);
         }
         40%,
         43% {
             animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-            transform: translate3d(-5px, 0px, 0) scale3d(0.9, 0.6, 0.7);
+            transform: translate3d(-5px, 0, 0);
         }
     
         70% {
             animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-            transform: translate3d(-2px, 0, 0) scale3d(0.9, 0.1, 0.7);
+            transform: translate3d(-2px, 0, 0);
         }
     
         90% {
-            transform: translate3d(-2px, 0, 0) scale3d(0.6, 0.6, 0.7);
+            transform: translate3d(-2px, 0, 0);
         }
       }
       @keyframes isRight {
         from {
           animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-          transform: translate3d(-58px, 0, 0) scale3d(0.9, 0.6, 0.7);;
+          transform: translate3d(-58px, 0, 0);
         }
         20%,
         53%,
         80%,
         to {
             animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-            transform: translate3d(0, 0, 0) scale3d(1);
+            transform: translate3d(0, 0, 0);
         }
         40%,
         43% {
             animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-            transform: translate3d(-5px, 0px, 0) scale3d(0.9, 0.6, 0.7);
+            transform: translate3d(5px, 0, 0);
         }
     
         70% {
             animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-            transform: translate3d(-2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
         }
     
         90% {
-            transform: translate3d(-2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
         }
       }
       @keyframes isTop {
@@ -103,7 +102,7 @@ export const GlobalStyle = props => (
       @keyframes isBottom {
         from {
           animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-          transform: translate3d(0 -58px, 0);
+          transform: translate3d(0 ,-58px, 0);
         }
         20%,
         53%,
@@ -115,16 +114,37 @@ export const GlobalStyle = props => (
         40%,
         43% {
             animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-            transform: translate3d(0, -5px, 0);
+            transform: translate3d(0, 5px, 0);
         }
     
         70% {
             animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-            transform: translate3d(0, -2px, 0);
+            transform: translate3d(0 2px, 0);
         }
     
         90% {
-            transform: translate3d(0, -2px, 0);
+            transform: translate3d(0, 2px, 0);
+        }
+      }
+      @keyframes pulse {
+        from,
+        to {
+          transform: scale3d(1, 1, 1);
+        }
+
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+          transform: scale3d(1.05, 1.05, 1.05);
+        }
+
+        20%,
+        40%,
+        60%,
+        80% {
+          transform: scale3d(0.99, 0.99, 0.99);
         }
       }
     `}
@@ -132,70 +152,64 @@ export const GlobalStyle = props => (
 )
 
 export const Container = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-flex-direction: column;
-`
-
-export const G = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 58px;
-  height: 58px;
+  height: 100vh;
+  flex-direction: column;
 `
 
-export const ItemInner = styled(G)`
-`
-
-export const I = styled.div`
-  top: 0;
-transform: translate3d(0, 0, 0);
-animation-duration: .1s;
-transition-duration: .1s;
-  width: 58px;
-  height: 58px;
+export const ItemBase = styled.div`
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 58px;
+  height: 58px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: transform .4s ease;
-  z-index: 2;
   border: solid 2px #000;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transform: translate3d(0, 0, 0);
+  animation-duration: .1s;
+  transition-duration: .1s;
 `
 
-export const Item = styled(I)`
-  ${p => `left: ${p.x * 60}px; top: ${p.y * 60}px;`}
-  ${p => p.color === 'red' && 'background: linear-gradient(to right, #ec4545, #ec4545);'}
-  ${p => p.color === 'blue' && 'background: linear-gradient(to right,#4378d8,#4378d8);'}
-  ${p => p.color === 'green' && 'background: linear-gradient(to right,#67dc67,#67dc67);'}
-  ${p => p.color === 'yellow' && 'background: linear-gradient(to right,#FFEB3B,#FFEB3B);'}
-  ${p => p.color === 'orange' && 'background: linear-gradient(to right,#fd9121,#fd9121);'}
-  ${p => p.color === 'white' && 'background: #111;'}
-  ${p => p.mini && 'width: 20px; height: 20px;'}
-  ${p => p.position && p.position && `animation-name: ${p.position};`}
-  ${p => p.mini && `
-    width: 20px;
-    height: 20px;
-    left: ${p.x * 20}px!important; top: ${p.y * 20}px!important;
+export const Item = styled(ItemBase)`
+  ${({ color, anime }) => `
+    ${color && `background: ${color};`} 
+    ${anime && `animation-name: ${anime};`}
   `}
 `
 
 export const Board = styled.div`
   width: 300px;
   height: 300px;
-  /* margin: 40px; */
   position: relative;
   background: #111;
-  ${p => p.mini && `
-    width: 100px;
-    height: 100px;
-  `
-  }
+`
+
+export const MiniBoard = styled.div`
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background: #111;
+`
+
+export const MiniItem = styled(ItemBase)`
+  width: 18px;
+  height: 18px;
+  opacity: 0.4;
+  animation-duration: 4s;
+  transition-duration: 4s;
+  animation-iteration-count: infinite;
+  transform: scale3d(1, 1, 1);
+  ${({ color, matched }) => `
+    ${color && `background: ${color};`}
+    ${color !== '#333333' && 'animation-name: pulse;'}
+    ${matched && `opacity: 1; animation-name: none; border-radius: 0;`}
+  `}
 `
 
 export const Finished = styled.h1`
