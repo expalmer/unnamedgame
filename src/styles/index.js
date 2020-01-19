@@ -164,7 +164,36 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  flex-direction: row;
+`
+
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  width: 50%;
+  height: 100%;
+  :first-of-type {
+    border: solid 1px #111;
+  }
+`
+
+export const Title = styled.div`
+  font-size: 18px;
+  color: #fff;
+  position: relative;
+`
+
+export const Keys = styled.div`
+  color: #444;
+  margin-bottom: 100px;
+`
+
+export const Span = styled.span`
+  color: #999;
+  font-weight: 600;
+  margin-right: 3px;
 `
 
 export const ItemBase = styled.div`
@@ -195,7 +224,7 @@ export const Board = styled.div`
   width: 300px;
   height: 300px;
   position: relative;
-  background: #202020;
+  background: #000;
   background-image: url(${noise});
   background-repeat: repeat;
   box-shadow: 0 1px 2px rgba(0,0,0,0.6), 
