@@ -1,7 +1,6 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@emotion/core': ^11.0.0
   '@emotion/react': ^11.9.0
   '@emotion/styled': ^11.8.1
   '@types/react': ^18.0.0
@@ -12,7 +11,6 @@ specifiers:
   vite: ^2.9.5
 
 dependencies:
-  '@emotion/core': 11.0.0
   '@emotion/react': 11.9.0_@types+react@18.0.8+react@18.1.0
   '@emotion/styled': 11.8.1_c518d5881adeea60a6659db82ca94b80
   react: 18.1.0
@@ -324,10 +322,6 @@ packages:
       '@emotion/utils': 1.1.0
       '@emotion/weak-memoize': 0.2.5
       stylis: 4.0.13
-    dev: false
-
-  /@emotion/core/11.0.0:
-    resolution: {integrity: sha512-w4sE3AmHmyG6RDKf6mIbtHpgJUSJ2uGvPQb8VXFL7hFjMPibE8IiehG8cMX3Ztm4svfCQV6KqusQbeIOkurBcA==}
     dev: false
 
   /@emotion/hash/0.8.0:
